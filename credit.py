@@ -27,7 +27,7 @@ else:
 final_lista = []
 for x in list(validacao):
   if x > 9:
-    subtracao = x-9
+    subtracao = x-9 ## Qualquer número de Dois dígitos subtraido de 9 é a soma de dois dígitos
     final_lista.append(subtracao)
   else:
     final_lista.append(x)
