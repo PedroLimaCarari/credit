@@ -10,15 +10,16 @@ Original file is located at
 numero = list(input())
 lista = []
 validacao = []
-print(numero)
 
+## Transforma os valores da lista do cartão em valores INTEIROS para que seja possível valida-lo.
 for val in numero:
   lista.append(int(val))
-print(lista)
 
+## Verifica se o cartão possui a quantidade de dígitos necessários relacionado as bandeiras.
 if len(lista) > 16:
   print('Cartão Inválido')
 else:
+## Começa o processo de validação por meio do algaritimo de Luhn.
   for x in list(reversed(lista))[1::2]:
    numero_validacao= 2 * x
    validacao.append(numero_validacao)
@@ -32,14 +33,15 @@ for x in list(validacao):
     final_lista.append(x)
 for x in list(reversed(lista))[::2]:
     final_lista.append(x)
-
-print(sum(final_lista))
-
-if lista[0] == 3 and (lista[1]== 4 or 7):
-  print("AMEX") 
-elif lista[0] == 5 and (lista[1]== 1 or 2 or 3 or 4 or 5):
-  print("MASTERCARD")
-elif lista[0] == 4:
-  print("VISA")
+## Demonstra a bandeira do cartão se ele passar no proceço de validação.
+if sum(final_lista)%10==0:
+  if lista[0] == 3 and (lista[1]== 4 or 7):
+    print("AMEX") 
+  elif lista[0] == 5 and (lista[1]== 1 or 2 or 3 or 4 or 5):
+    print("MASTERCARD")
+  elif lista[0] == 4:
+    print("VISA")
+  else:
+    print("inválido")
 else:
   print("inválido")
